@@ -10,12 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/users")
 public class UserController {
 
-    @GetMapping("/get")
-    public String getUser() {
-        return "Ola API";
-    }
-
-    @PostMapping("/post")
+    @PostMapping("/")
     public void createUser(@RequestBody UserModel userModel) {
         System.out.println(userModel.getUsername());
     }
