@@ -1,4 +1,4 @@
-package br.com.thalysravel.TodoList.user;
+package br.com.thalysravel.TodoList.task;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -11,20 +11,22 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-@Data //Coloca os Getters(@Getter) e Setter(@Setter) automaticamente
+@Data
+@Entity(name = "tb_tasks")
+public class TaskModel {
 
-@Entity(name = "tb_users")
-public class UserModel {
-
-    //@Getter e @Setter podem ser colocados em cima dos atributos tbm
     @Id
     @GeneratedValue(generator = "UUID")
     private UUID id;
+    private String description;
 
-    @Column(nullable = false, unique = true)
-    private String username;
-    private String name;
-    private String password;
+    @Column(length = 50)
+    private String title;
+    private LocalDateTime startAt;
+    private LocalDateTime endAt;
+    private String priority;
+
+    private UUID idUser;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
